@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Covid-Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style media="screen">
+      body {
+        background-color:gray;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1 style="color:white;text-align:center;font-weight:bold;"><span style="color:red;">Covid-19</span> Worldwide Data!</h1>
+
+    <form align="center" action="" method="POST">
+      {% csrf_token %}
+      <div class="container">
+        <select class="" name="selected_country" style="background-color:skyblue;width:200px;height:35px;border-radius:5px">
+          {% for country in mylist %}
+            <option >{{country}}</option>
+          {% endfor %}
+        </select>
+        <input class="btn btn-danger btn-bg" type="submit" name="" value="Submit">
+      </div>
+    </form>
+
+    <h1 style="margin-top:15px;color:white;text-align:center;font-weight:bold;">{{selected_country}}</h1>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-md-4" style="height:100px;width:200px;background-color:orange; border-radius:10px;text-align:center;margin-left:145px;margin-top:50px">
+            <h1>{{total}}</h1>
+            <p style="font-weight:bold;">TOTAL CASES</p>
+          </div>
+          <div class="col-xs-6 col-md-4" style="height:100px;width:200px;background-color:rgb(165,42,42);border-radius:10px;text-align:center;margin-left:145px;margin-top:50px"">
+            <h1>{{active}}</h1>
+            <p style="font-weight:bold;">ACTIVE CASES</p>
+          </div>
+          <div class="col-xs-6 col-md-4" style="height:100px;width:200px;background-color:red;border-radius:10px;text-align:center;margin-left:145px;margin-top:50px"">
+            <h1>{{critical}}</h1>
+            <p style="font-weight:bold;">CRITICAL CASES</p>
+          </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+
+          <div class="col-xs-6 col-md-4" style="height:100px;width:200px;background-color:pink;border-radius:10px;text-align:center;margin-left:145px;margin-top:50px">
+            <h1>{{new}}</h1>
+            <p style="font-weight:bold;">NEW CASES</p>
+          </div>
+          <div class="col-xs-6 col-md-4" style="height:100px;width:200px;background-color:green;border-radius:10px;text-align:center;margin-left:145px;margin-top:50px">
+            <h1>{{recovered}}</h1>
+            <p style="font-weight:bold;">RECOVERED CASES</p>
+          </div>
+          <div class="col-xs-6 col-md-4" style="height:100px;width:200px;background-color:red;border-radius:10px;text-align:center;margin-left:145px;margin-top:50px">
+            <h1>{{deaths}}</h1>
+            <p style="font-weight:bold;">DECEASED CASES</p>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
